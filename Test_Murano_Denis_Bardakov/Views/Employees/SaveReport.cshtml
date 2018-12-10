@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Сохранить отчет";
+}
+
+<div class="text-center">
+    <h2>Отчет сохранен по адресу: @ViewBag.FilePath</h2>
+
+    <div>
+        @Html.ActionLink("Возвратиться к списку сотрудников", "Index")
+    </div>
+</div>

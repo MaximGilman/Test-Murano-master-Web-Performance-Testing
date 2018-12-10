@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Моя компания</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <meta name="description" content="list, employees" />
+</head>
+<body>
+
+    <ul class="nav nav-tabs navbar-default navbar-fixed-top">
+
+        <li>@Html.ActionLink("Главная", "Index", "Employees")</li>
+        <li>@Html.ActionLink("Добавить нового", "Create", "Employees")</li>
+        <li>@Html.ActionLink("Сохранить отчет", "SaveReport", "Employees")</li>
+    </ul>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Denis Bardakov App</p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

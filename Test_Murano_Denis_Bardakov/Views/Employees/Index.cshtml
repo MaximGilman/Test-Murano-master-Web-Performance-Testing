@@ -1,0 +1,73 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+@model IPagedList<Test_Murano_Denis_Bardakov.Models.Employees>
+
+@{
+    ViewBag.Title = "Список сотрудников";
+}
+
+@using (Html.BeginForm("Index", "Employees", FormMethod.Get))
+{
+    <b> Фильтровать по cтатусу: </b>
+    @Html.RadioButton("filter", "активен") <text>активен</text>
+    @Html.RadioButton("filter", "не активен") <text>не активен</text>
+    @Html.RadioButton("filter", "все", true) <text>все</text>
+    <input type="submit" name="submit" value="Фильтровать" class="btn btn-sm btn-default" />
+}
+
+<h2>Список сотрудников компании</h2>
+
+<table class="table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Position)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Salary)
+        </th>
+        <th>
+            Действия
+        </th>
+    </tr>
+
+    @if (Model.Count() == 0)
+    {
+        <tr>
+            <td colspan="5"> Нет подходящих сотрудников по указанному фильтру</td>
+        </tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Position)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salary)
+                </td>
+                <td>
+                    @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }, new { @class = "btn btn-xs btn-warning" }) |
+                    @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { @class = "btn btn-xs btn-danger" })
+                </td>
+            </tr>
+        }
+    }
+</table>
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, filter = Request.QueryString["filter"] }),
+                    new PagedListRenderOptions { Display = PagedListDisplayMode.IfNeeded })

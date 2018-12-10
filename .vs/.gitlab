@@ -1,0 +1,13 @@
+{
+  "User": {
+    "Id": 3016544,
+    "Username": "MaximGilman",
+    "Name": "Maxim",
+    "Email": "maxim.gilman@yandex.ru",
+    "AvatarUrl": "https://secure.gravatar.com/avatar/531f4030b4024d7b7bd4d31003a40ee1?s=80&d=identicon",
+    "PrivateToken": "7f3bd52f132c62c6176e296281791a1b679a5a80f13157cd55a8bd219d9ff739",
+    "Host": "https://gitlab.com/",
+    "TwoFactorEnabled": false,
+    "ApiVersion": 3
+  }
+}
